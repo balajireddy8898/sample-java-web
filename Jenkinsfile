@@ -16,11 +16,6 @@ pipeline {
         bat 'mvn sonar:sonar'
       }
     }
-    stage('deploy') {
-      steps {
-        bat 'echo "hgdd"'
-      }
-    }
   }
   environment {
     star = ''
