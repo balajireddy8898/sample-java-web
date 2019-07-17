@@ -1,23 +1,20 @@
-pipeline {
-  agent any
-  stages {
-    stage('chekout') {
-      steps {
-        git(url: 'https://github.com/balajireddy8898/sample-java-web.git', branch: 'master')
+ piepline{
+agent any
+   
+  stages{
+     stage('compile stage'){
+      steps{
+           with maven(maven: 'maven 3.3.9'){
+           sh 'mvn clean compile'
       }
-    }
-    stage('build') {
-      steps {
-        bat(returnStatus: true, script: 'mvn clean install')
-      }
-    }
-    stage('sonarqueb') {
-      steps {
-        bat 'mvn sonar:sonar'
-      }
+   }
+}
+    stage('Testing Stage'){
+      steps{
+          with maven(maven: 'maven 3.3.9'){
+          sh 'mvn test'
     }
   }
-  environment {
-    star = ''
-  }
+}
+}
 }
