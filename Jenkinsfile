@@ -11,5 +11,10 @@ pipeline {
         bat 'mvn clean install'
       }
     }
+    stage('junit') {
+      steps {
+        bat 'mvn clean test '
+      }
+    }
   }
 }
