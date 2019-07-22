@@ -16,5 +16,10 @@ pipeline {
         bat 'mvn clean test '
       }
     }
+    stage('sonarqube') {
+      steps {
+        bat 'mvn sonar:sonar'
+      }
+    }
   }
 }
